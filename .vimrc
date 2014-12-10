@@ -120,6 +120,9 @@ Bundle "https://github.com/fsouza/go.vim"
 Bundle "https://github.com/vim-scripts/a.vim"
 Bundle "https://github.com/lifeibo/vimfile"
 
+Bundle "https://github.com/rizzatti/dash.vim"
+:nmap <silent> <leader>d <Plug>DashSearch
+
 Bundle "Solarized"
 Bundle "https://github.com/Lokaltog/vim-powerline"
     set laststatus=2
