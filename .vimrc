@@ -98,7 +98,7 @@ Bundle 'The-NERD-tree'
   let NERDTreeShowLineNumbers=1
   let NERDTreeWinPos=1
 
-Bundle "https://github.com/812lcl/visualmark"
+Bundle "https://github.com/lifeibo/visualmark"
     " 设置快捷键
     if !hasmapto('<Plug>Vm_toggle_sign')
       map <silent> <unique> <c-k><c-k> <Plug>Vm_toggle_sign 
