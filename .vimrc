@@ -16,6 +16,8 @@ set expandtab   " tab as space
 set shiftwidth=4
 "}
 
+set foldmethod=manual "set default foldmethod
+
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set fenc=utf-8
 set autoindent
@@ -23,6 +25,7 @@ set hidden
 set cindent
 set encoding=utf-8
 
+set autowrite
 "set laststatus=2
 "set number                                    "显示行号
 "set undofile                                  "无限undo
@@ -34,10 +37,10 @@ autocmd BufReadPost *
    \ exe "normal g'\"" |
    \ endif
 
+autocmd BufNewFile,BufRead *.h,*.c setfiletype cpp
+
 "自动换行
 set wrap
-"将-连接符也设置为单词
-set isk+=-
 "没有交换文件
 set noswapfile
 
@@ -60,9 +63,12 @@ inoremap <c-h> <left>
 "修改leader键为逗号
 let mapleader=","
 
+"复制到系统剪切板
+map<silent> <leader>y "+y
+
 "修改vim的正则表达
-nnoremap / /\v
-vnoremap / /\v
+"nnoremap / /\v
+"vnoremap / /\v
 
 "使用<leader>空格来取消搜索高亮
 nnoremap <leader><space> :noh<cr>
@@ -77,6 +83,9 @@ set go-=L
 " map my key
 map <silent> <C-e> $
 map <silent> <C-a> ^
+map <C-n> <Esc>:make<cr>
+map <c-h> <c-w>h
+map <c-l> <c-w>l
 
 "Vundle Settings {
 set rtp+=~/.vim/bundle/vundle/
@@ -87,6 +96,8 @@ Bundle 'matchit.zip'
 Bundle 'Tabular'
 Bundle 'trailing-whitespace'
 Bundle "ayang/AutoComplPop"
+Bundle "racer-rust/vim-racer"
+Bundle "rust-lang/rust.vim"
 
 Bundle 'The-NERD-tree'
   "设置相对行号
@@ -98,7 +109,7 @@ Bundle 'The-NERD-tree'
   let NERDTreeShowLineNumbers=1
   let NERDTreeWinPos=1
 
-Bundle "https://github.com/lifeibo/visualmark"
+Bundle "https://github.com/zhisheng/visualmark.vim"
     " 设置快捷键
     if !hasmapto('<Plug>Vm_toggle_sign')
       map <silent> <unique> <c-k><c-k> <Plug>Vm_toggle_sign 
@@ -119,16 +130,46 @@ Bundle "https://github.com/lifeibo/visualmark"
 Bundle "https://github.com/fsouza/go.vim"
 Bundle "https://github.com/vim-scripts/a.vim"
 Bundle "https://github.com/lifeibo/vimfile"
+Bundle "https://github.com/vim-scripts/genutils"
+Bundle "https://github.com/ctrlpvim/ctrlp.vim"
+
+"CtrlP
+let g:ctrlp_map = '<c-p>'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,"*/github.com/"
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|github.com|code.google.com|bitbucket.org|gopkg.in|golang.org|darwin_amd64|linux_amd64|auto\/libs|portal\/data/|portal\/dave/',
+  \ 'file': '\v\.(exe|so|dll|jpg|png|jpeg)$',
+  \ }
+
+highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+
 
 Bundle "https://github.com/rizzatti/dash.vim"
 :nmap <silent> <leader>d <Plug>DashSearch
 
-Bundle "Solarized"
+
+
+Bundle 'altercation/vim-colors-solarized'
 Bundle "https://github.com/Lokaltog/vim-powerline"
     set laststatus=2
 "}
 
+" lookupfile setting {
+let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
+let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
+let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
+let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
+let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
+if filereadable("./filenametags")                "设置tag文件的名字
+    let g:LookupFile_TagExpr = '"./filenametags"'
+endif
+nmap <leader>o :LookupFile<CR>
+"}
+
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+
+autocmd FileType c,cpp set colorcolumn=80
 
 " Gui setting {
 if has('gui_running')
@@ -139,8 +180,11 @@ if has('gui_running')
     " Set input method off
     set imdisable
     set mousehide
-    set gfn=Menlo:h19
+    set gfn=Menlo:h15
     set incsearch
+
+    map gh gT
+    map gl gt
 
     Bundle "Solarized"
     colorscheme solarized
@@ -155,3 +199,40 @@ endif
 filetype plugin indent on
 syntax on
 
+" go tag
+let g:tagbar_type_go = {
+\ 'ctagstype' : 'go',
+\ 'kinds'     : [
+    \ 'p:package',
+    \ 'i:imports:1',
+    \ 'c:constants',
+    \ 'v:variables',
+    \ 't:types',
+    \ 'n:interfaces',
+    \ 'w:fields',
+    \ 'e:embedded',
+    \ 'm:methods',
+    \ 'r:constructor',
+    \ 'f:functions'
+\ ],
+\ 'sro' : '.',
+\ 'kind2scope' : {
+    \ 't' : 'ctype',
+    \ 'n' : 'ntype'
+\ },
+\ 'scope2kind' : {
+    \ 'ctype' : 't',
+    \ 'ntype' : 'n'
+\ },
+\ 'ctagsbin'  : 'gotags',
+\ 'ctagsargs' : '-sort -silent'
+\ }
+
+set backupskip=/tmp/*,/private/tmp/*
+"set makeprg=/Users/lizi/work/bin/vimmake
+
+set vb
+set paste
+
+" rust
+let g:rustfmt_autosave = 1
