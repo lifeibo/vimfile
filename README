@@ -2,6 +2,7 @@
 - 安装插件： `cp .vimrc ~`
 - 安装插件： `:BundleInstall`
 - 更新插件： `:BundleInstall!`
+- 更新插件： `:GoInstallBinaries!`
 - 卸载不在列表中的插件： `:BundleClean"`
 
 更多插件：http://vim-scripts.org/vim/scripts.html
