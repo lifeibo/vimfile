@@ -127,28 +127,53 @@ Bundle "https://github.com/lifeibo/visualmark"
     nnoremap <silent> <script> <Plug>Vm_goto_prev_sign	:call Vm_goto_prev_sign()<cr>
 
 
-Bundle "https://github.com/fsouza/go.vim"
+Bundle "https://github.com/fatih/vim-go"
+
 Bundle "https://github.com/vim-scripts/a.vim"
 Bundle "https://github.com/lifeibo/vimfile"
 Bundle "https://github.com/vim-scripts/genutils"
-Bundle "https://github.com/ctrlpvim/ctrlp.vim"
-
+"Bundle "https://github.com/ctrlpvim/ctrlp.vim"
+"Bundle "tacahiroy/ctrlp-funky"
 "CtrlP
-let g:ctrlp_map = '<c-p>'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,"*/github.com/"
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|github.com|code.google.com|bitbucket.org|gopkg.in|golang.org|darwin_amd64|linux_amd64|auto\/libs|portal\/data/|portal\/dave/',
-  \ 'file': '\v\.(exe|so|dll|jpg|png|jpeg)$',
-  \ }
+"let g:ctrlp_map = '<c-p>'
+"nmap <Leader>f :CtrlPMRUFiles<CR>
+"set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+"let g:ctrlp_custom_ignore = {
+"  \ 'dir':  '\v[\/]\.(git|hg|svn)$|code.google.com|bitbucket.org|gopkg.in|golang.org|darwin_amd64|linux_amd64|auto\/libs|portal\/data/|portal\/dave/',
+"  \ 'file': '\v\.(exe|so|dll|jpg|png|jpeg)$',
+"  \ }
 
 highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
 highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
 
 
+Bundle 'junegunn/fzf'
+Bundle 'junegunn/fzf.vim'
+"<Leader>f在当前目录搜索文件
+nnoremap <silent> <c-p> :Files<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+"<Leader>b切换Buffer中的文件
+nnoremap <silent> <Leader>b :Buffers<CR>
+"<Leader>p在当前所有加载的Buffer中搜索包含目标词的所有行，:BLines只在当前Buffer中搜索
+nnoremap <silent> <Leader>l :Lines<CR>
+"<Leader>h在Vim打开的历史文件中搜索，相当于是在MRU中搜索，:History：命令历史查找
+nnoremap <silent> <Leader>h :History<CR>
+"brew install the_silver_searcher
+"ignore files ~/.agignore like: *test.go
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+nnoremap <silent> <Leader>a :Ag<CR>
+
 Bundle "https://github.com/rizzatti/dash.vim"
 :nmap <silent> <leader>d <Plug>DashSearch
 
 
+"go get -v github.com/rogpeppe/godef;go install -v github.com/rogpeppe/godef
+"Bundle 'dgryski/vim-godef'
+let godef_split=0
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle "https://github.com/Lokaltog/vim-powerline"

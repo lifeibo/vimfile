@@ -1,5 +1,8 @@
 - 安装Vundle：`git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
 - 安装插件： `cp .vimrc ~`
+- brew install fzf
+- brew install ag
+- 安装插件： `cp .agignore ~`
 - 安装插件： `:BundleInstall`
 - 更新插件： `:BundleInstall!`
 - 更新插件： `:GoInstallBinaries!`
