@@ -1,0 +1,6 @@
+*test.go
+*.txt
+*.md
+*tags
+*vendor*
+*man*
