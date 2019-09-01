@@ -1,0 +1,34 @@
+#!/usr/bin/python
+
+import os
+import sys
+import subprocess
+
+if len(sys.argv) == 2:
+    option = sys.argv[1]
+else:
+    option = ""
+
+cwd = os.getcwd()
+
+if cwd.startswith("/Users/lizi/work/nfs/a/src/tengine-cdna"):
+    print "remote:"
+    dir = cwd[len("/Users/lizi/work/nfs/a"):]
+    dir = "/home/lizi/macbook/nfs" + dir
+    cmd = "/Users/lizi/work/bin/msh"
+    args = "cd %s && make %s"%(dir, option)
+    #s = subprocess.check_output([cmd, args], stderr=subprocess.STDOUT)
+    #print s 
+    cmdline = "%s '%s'"%(cmd, args)
+    print cmdline
+    os.system(cmdline)
+elif cwd.startswith("/Users/lizi/work/nfs/a/src/heka/heka-0.6.0/dup"):
+    print "local:"
+    if option == "test":
+        os.system("make %s" % (option))
+    else:
+        os.system("make %s 2>/tmp/a" % (option))
+        os.system("cat /tmp/a | sed 's/build\/heka\/src/externals/'; rm -rf /tmp/a")
+else:
+    print "local:"
+    os.system("make %s" % (option))
