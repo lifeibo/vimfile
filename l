@@ -60,6 +60,8 @@ function init() {
     export C_INCLUDE_PATH=/opt/local/include/:$C_INCLUDE_PATH
     export CPLUS_INCLUDE_PATH=/opt/local/include/:$CPLUS_INCLUDE_PATH
 
+	export GOPATH=$HOME/work/go
+
     export EDITOR='vim'
     export AUTOSSH_PORT=0
     export DOCKER_HOST=tcp://127.0.0.1:4243
