@@ -34,8 +34,6 @@ function init() {
 
     alias make="vimmake"
 
-    alias v="vim /Users/lizi/lizi"
-
     alias l=". l"
 
     alias lf="l f"
@@ -65,7 +63,7 @@ function init() {
     export EDITOR='vim'
     export AUTOSSH_PORT=0
     export DOCKER_HOST=tcp://127.0.0.1:4243
-    PATH="/usr/local/sbin:$PATH:/Users/lizi/work/bin:/Users/lizi/work/go/bin"
+    PATH="/usr/local/sbin:$PATH:$HOME/work/bin:$HOME/work/go/bin"
 }
 
 #begin
