@@ -1,0 +1,57 @@
+map <silent> <C-e> $
+map <silent> <C-a> ^
+map <c-h> <c-w>h
+map <c-l> <c-w>l
+map <c-k> <c-w>k
+map <c-j> <c-w>j
+
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+inoremap <c-l> <right>
+inoremap <c-h> <left>
+
+set paste
+
+let mapleader=","
+
+" 复制到系统剪切板
+map<silent> <leader>y "+y
+map<silent> <c-y> "+y
+
+map <c-u> %
+
+set ignorecase "设置大小写敏感和聪明感知(小写全搜，大写完全匹配)
+set smartcase set incsearch
+set showmatch
+set hlsearch
+
+map <c-k><c-k> :action ToggleBookmark<CR>
+map <c-k><c-p> :action GotoPreviousBookmark<CR>
+map <c-k><c-n> :action GotoNextBookmark<CR>
+map <c-k><c-l> :action ShowBookmarks<CR>
+
+
+map <leader>r :action Run<CR>
+map <leader>d :action Debug<CR>
+
+"find
+map <leader>a :action FindInPath<CR>
+"map<silent> <leader>f :action SearchEverywhere<CR>
+
+map<silent> <leader>x :action CommentByLineComment<CR>
+map<silent> <leader>g :action CommentByBlockComment<CR>
+map<silent> <leader>f y<CR>/<c-r>0<CR>
+map<silent> <leader>F y<CR>?<c-r>0<CR>
+map<silent> gh :action PreviousTab<CR>
+map<silent> gl :action NextTab<CR>
+
+map<silent> <leader>t :action SelectInProjectView<CR>
+map<silent> <leader>cp :action Compare.LastVersion<CR>
+map<silent> gr :action ActivateRunToolWindow<CR>
+map<silent> gt :action ActivateTerminalToolWindow<CR>
+
+" prefer use idea system kep map instead.
+"map<silent> <M-ESC> :action NextWindow<CR>
+
+
+":source ~/.ideavimrc
