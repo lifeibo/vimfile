@@ -1,4 +1,4 @@
-- 安装Vundle：`git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+- 安装Vundle：`git clone https://github.com/vim-scripts/vundle.git ~/.vim/bundle/vundle`
 - 安装插件： `cp .vimrc ~`
 - brew install fzf
 - brew install ag
