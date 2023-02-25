@@ -131,14 +131,8 @@ if [ $1 = "work" ] ; then
             h)
                 cd ~/work/src/skyeye
             ;;
-            n)
-                cd ~/work/src/tengine-cdn
-            ;;
-            i)
-                cd ~/work/go/src/github.com/influxdata/influxdb
-            ;;
             *)
-            echo -e "usage: lwork c:icloud|h:heka|n:tengine"
+            echo -e "usage: lwork "
         esac
 
 

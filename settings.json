@@ -1,0 +1,362 @@
+{
+    "vim.leader": ",",
+    "vim.useSystemClipboard": false,
+    "vim.hlsearch": true,
+    "vim.commandLineModeKeyBindingsNonRecursive": [],
+    // sudo curl -Ls -o /usr/local/bin/im-select https://github.com/daipeihust/im-select/raw/master/im-select-mac/out/im-select
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
+    "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
+    "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<down>"
+            ]
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "after": [
+                "<up>"
+            ]
+        },
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "after": [
+                "<right>"
+            ]
+        },
+        {
+            "before": [
+                "<C-h>"
+            ],
+            "after": [
+                "<left>"
+            ]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // start and end
+        {
+            "before": [
+                "<C-e>"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "<C-a>"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        // move panel
+        {
+            "before": [
+                "<C-h>"
+            ],
+            "after": [
+                "<C-w>",
+                "h"
+            ]
+        },
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "after": [
+                "<C-w>",
+                "l"
+            ]
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "after": [
+                "<C-w>",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<C-w>",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "<C-u>"
+            ],
+            "after": [
+                "%"
+            ]
+        },
+        {
+            "before": [
+                "c"
+            ],
+            "commands": [
+                "workbench.action.showCommands",
+            ]
+        },
+        // bookmark
+        {
+            "before": [
+                "<leader>",
+                "k"
+                // "<C-k>",
+                // "<C-k>"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "m"
+                // "<C-k>",
+                // "<C-o>"
+            ],
+            "commands": [
+                "bookmarks.jumpToPrevious"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n",
+                // "<C-k>",
+                // "<C-n>"
+            ],
+            "commands": [
+                "bookmarks.jumpToNext"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "bookmarksExplorer.focus"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "a"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "x"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        // panel
+        {
+            "before": [
+                "g",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.previousEditor"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.nextEditor"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "commands": [
+                "workbench.action.debug.stop",
+                "workbench.action.debug.start"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.debug.stop",
+                "workbench.action.debug.run"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": [
+                "<C-[>",
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        // start and end
+        {
+            "before": [
+                "<C-e>"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "<C-a>"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        // copy
+        {
+            "before": [
+                "<C-y>"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "x"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "r"
+            ],
+            "commands": [
+                "translates.candidate"
+            ]
+        }
+    ],
+    "go.useLanguageServer": true,
+    "go.autocompleteUnimportedPackages": true,
+    "go.lintTool": "golangci-lint",
+    "files.autoSaveDelay": 1,
+    "editor.rulers": [
+        100
+    ],
+    "go.alternateTools": {},
+    "python.formatting.provider": "yapf",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.configuration.maven.userSettings": "/Users/lizi/.m2/settings.xml",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    // 保存格式化
+    "editor.formatOnSave": true,
+    "[java]": {
+        "editor.formatOnSave": false
+    },
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-1.8",
+            "path": "/Users/lifeibo/work/java/jdk8/Contents/Home"
+        },
+        {
+            "name": "JavaSE-11",
+            "path": "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"
+        }
+    ],
+    "python.languageServer": "Pylance",
+    "git.ignoreLegacyWarning": true,
+    "terminal.explorerKind": "external",
+    "vim.statusBarColorControl": false,
+    "java.project.importOnFirstTimeStartup": "automatic",
+    "editor.wordWrap": "on",
+    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "window.zoomLevel": 1.2,
+    "vim.easymotion": false,
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.cursorStyle": "line",
+    "editor.lineNumbers": "on",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.minimap.enabled": false,
+    "redhat.telemetry.enabled": true,
+    "cmake.configureOnOpen": true,
+    "google-translate.firstLanguage": "zh-cn",
+    "google-translate.secondLanguage": "en",
+    "workbench.iconTheme": "office-material-icon-theme",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+}
