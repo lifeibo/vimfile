@@ -1,6 +1,9 @@
 set nocompatible          "不要兼容vi
 filetype off              "必须的设置：
 
+command Hello :call
+
+
 "Color Settings {
 set background=dark          "使用color solarized
 set ttyfast
@@ -65,6 +68,10 @@ let mapleader=","
 
 "复制到系统剪切板
 map<silent> <leader>y "+y
+map<silent> <c-y> "+y
+
+map <c-u> %
+
 
 "修改vim的正则表达
 "nnoremap / /\v
@@ -87,6 +94,8 @@ map <C-n> <Esc>:make<cr>
 map <c-h> <c-w>h
 map <c-l> <c-w>l
 
+map <c-u> %
+
 "Vundle Settings {
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -101,7 +110,7 @@ Bundle "rust-lang/rust.vim"
 
 Bundle 'The-NERD-tree'
   "设置相对行号
-  nmap <leader>nt :NERDTree<cr>
+  nmap <leader>t :NERDTree<cr>
   let NERDTreeShowBookmarks=1
   let NERDTreeShowFiles=1
   let NERDTreeShowHidden=1
@@ -122,12 +131,10 @@ Bundle "https://github.com/lifeibo/visualmark"
     nnoremap <silent> <script> <Plug>Vm_goto_next_sign	:call Vm_goto_next_sign()<cr>
 
     if !hasmapto('<Plug>Vm_goto_prev_sign')
-      map <unique> <c-p> <Plug>Vm_goto_prev_sign
+      map <unique> <c-k><c-o> <Plug>Vm_goto_prev_sign
     endif
     nnoremap <silent> <script> <Plug>Vm_goto_prev_sign	:call Vm_goto_prev_sign()<cr>
 
-
-Bundle "https://github.com/fatih/vim-go"
 
 Bundle "https://github.com/vim-scripts/a.vim"
 Bundle "https://github.com/lifeibo/vimfile"
