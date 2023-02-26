@@ -5,8 +5,7 @@ export PATH=/opt/homebrew/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="ys"
-ZSH_THEME="candy"
+ZSH_THEME="robbyrussell"
 
 plugins=(
     sudo

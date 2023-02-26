@@ -9,8 +9,6 @@ function help() {
     echo "      vim     lvim        -- vim file:num"
 
     echo "Code:"
-    echo "      vimn    lvimn       -- vim nginx.conf"
-    echo "      n       n           -- restart nginx"
     echo "      work    lwork       -- cd path"
 
     echo "      m       lm|m        -- do make"
@@ -27,12 +25,6 @@ function init() {
     alias sl="ls"
     alias sls="ls"
     alias mvim="/usr/local/Cellar/macvim/8.1-157/bin/mvim"
-    alias s="source"
-    alias rm="rm -f"
-    alias now="date +%s"
-    alias ruby="ruby1.9"
-
-    alias make="vimmake"
 
     alias l=". l"
 
@@ -41,7 +33,6 @@ function init() {
     alias lviml="l viml"
     alias lwork="l work"
     alias lre="l re"
-    alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
 
     alias ldo="l do"
     alias lo="l o"
@@ -59,6 +50,7 @@ function init() {
 
     export C_INCLUDE_PATH=/opt/local/include/:$C_INCLUDE_PATH
     export CPLUS_INCLUDE_PATH=/opt/local/include/:$CPLUS_INCLUDE_PATH
+	export https_proxy=http://192.168.0.23:3457 http_proxy=http://192.168.0.23:3457 all_proxy=socks5://192.168.0.23:3457
 
 	export GOPATH=$HOME/work/go
 
@@ -70,12 +62,14 @@ function init() {
 
 #begin
 
-if [ $# = 0 ] ; then
-    help
-    return
+if [ $# = 1 ] ; then
+	if [ $1 = "zle_bracketed_paste" ] ; then
+		help
+		return
+	fi
 fi
 
-if [ $1 = "source" ] ; then
+if [ $1 = "re" ] ; then
     init
     return
 fi
@@ -87,6 +81,7 @@ args=""
 for var in $@; do
     args="$args $var"
 done
+echo $args
 
 #mycommadn
 
@@ -105,31 +100,14 @@ if [ $1 = "viml" ] ; then
     return
 fi
 
-if [ $1 = "vimn" ] ; then 
-    vim ~/work/nginx/conf/nginx.conf
-    return
-fi
-
-if [ $1 = "n" ] ; then 
-    cd ~/work/nginx/sbin/
-    #start another shell
-    sh ~/work/nginx/sbin/n $2
-    cd -
-    return
-fi
-
-
 if [ $1 = "work" ] ; then 
 
        case "$2" in
-            c)
-                cd '~/Library/Mobile Documents/com~apple~Numbers/Documents'
-            ;;
-            r)
-                cd '~/work/src/rust'
-            ;;
             h)
-                cd ~/work/src/skyeye
+                cd '/Users/lifeibo/work/src'
+            ;;
+            c)
+                cd ~/work/src
             ;;
             *)
             echo -e "usage: lwork "
